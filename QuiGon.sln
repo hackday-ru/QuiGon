@@ -8,8 +8,60 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataProviders", "DataProviders", "{B646A9A1-7417-4513-92F5-8109403FA7BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{41050A6A-2131-4D02-B941-AFA1107E77DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Analysis", "Analysis", "{C3048ABD-33D0-4EFA-A0D2-694AC45E8235}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{D323708F-21F7-4207-9787-0695A09ADEE7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{1640B693-A7F7-401F-9EC8-044ED3E7423C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{15A305AC-356D-4E9E-AD97-66BA676B1E43}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataProvider", "DataProvider", "{C146DEAE-BDFE-442D-93F7-0AC62AA829EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VkDataProvider", "VkDataProvider", "{C86A1D10-158B-443F-92B4-EE94947CF4FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuiGon.Infrastructure", "Infrastructure\QuiGon.Infrasctructure\QuiGon.Infrastructure.csproj", "{0E19D097-17BC-46BA-A7E4-20AABD0F5F85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuiGon.Analysis", "Analysis\QiuGon.Analysis\QuiGon.Analysis.csproj", "{3C5CB61B-0004-4FF0-AC69-7D1C8A6EC3FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{A838B698-A363-4D53-9E8E-3F268B246F39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A7F6687F-5A7D-453C-9906-8CABB76FB3C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuiGon.Analysis.Tests", "Tests\QuiGon.Analysis.Tests\QuiGon.Analysis.Tests.csproj", "{D5BC3ECC-E689-4132-81DD-3083E2C06783}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E19D097-17BC-46BA-A7E4-20AABD0F5F85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E19D097-17BC-46BA-A7E4-20AABD0F5F85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E19D097-17BC-46BA-A7E4-20AABD0F5F85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E19D097-17BC-46BA-A7E4-20AABD0F5F85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5CB61B-0004-4FF0-AC69-7D1C8A6EC3FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5CB61B-0004-4FF0-AC69-7D1C8A6EC3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5CB61B-0004-4FF0-AC69-7D1C8A6EC3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5CB61B-0004-4FF0-AC69-7D1C8A6EC3FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5BC3ECC-E689-4132-81DD-3083E2C06783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5BC3ECC-E689-4132-81DD-3083E2C06783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5BC3ECC-E689-4132-81DD-3083E2C06783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5BC3ECC-E689-4132-81DD-3083E2C06783}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{15A305AC-356D-4E9E-AD97-66BA676B1E43} = {B646A9A1-7417-4513-92F5-8109403FA7BE}
+		{C146DEAE-BDFE-442D-93F7-0AC62AA829EC} = {B646A9A1-7417-4513-92F5-8109403FA7BE}
+		{C86A1D10-158B-443F-92B4-EE94947CF4FB} = {B646A9A1-7417-4513-92F5-8109403FA7BE}
+		{0E19D097-17BC-46BA-A7E4-20AABD0F5F85} = {41050A6A-2131-4D02-B941-AFA1107E77DD}
+		{3C5CB61B-0004-4FF0-AC69-7D1C8A6EC3FA} = {C3048ABD-33D0-4EFA-A0D2-694AC45E8235}
+		{D5BC3ECC-E689-4132-81DD-3083E2C06783} = {A7F6687F-5A7D-453C-9906-8CABB76FB3C0}
 	EndGlobalSection
 EndGlobal
