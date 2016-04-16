@@ -1,6 +1,5 @@
 ﻿using QuiGon.Analysis.LanguageDetection;
 using QuiGon.Analysis.Text;
-using QuiGon.Infrastructure.Entities;
 
 namespace QuiGon.Analysis.Filters.TextFilters
 {

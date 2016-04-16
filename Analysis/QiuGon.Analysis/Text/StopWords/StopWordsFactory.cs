@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using QuiGon.Analysis.Helpers;
 using QuiGon.Analysis.LanguageDetection;
+using QuiGon.Analysis.Text.Lemmatisation;
+using QuiGon.Analysis.Text.Stemming;
 
 namespace QuiGon.Analysis.Text.StopWords
 {
@@ -48,8 +50,17 @@ namespace QuiGon.Analysis.Text.StopWords
         /// <returns></returns>
         private HashSet<string> GetRussianStopWords()
         {
-            //TODO здесь нужен стемминг
-            return WordsFromFileProvider.GetStopWordsFromFile(RussianStopWordsPath) ??  new HashSet<string>();
+            var stemmer = new Stemmer();
+
+            var stemmedWords = new HashSet<string>();
+            var stopWords = WordsFromFileProvider.GetStopWordsFromFile(RussianStopWordsPath) ??  new HashSet<string>();
+            foreach (var stopWord in stopWords)
+            {
+                stemmedWords.Add(stemmer.Stem(stopWord));
+                //stemmedWords.Add(stopWord);
+            }
+
+            return stemmedWords;
         }
 
         /// <summary>
