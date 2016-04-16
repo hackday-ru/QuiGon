@@ -19,9 +19,9 @@ namespace QuiGon.Analysis.LanguageDetection
 
             switch (action.Type)
             {
-                case SubjectACtionType.Comment:
-                case SubjectACtionType.Repost:
-                case SubjectACtionType.Post:
+                case SubjectActionType.Comment:
+                case SubjectActionType.Repost:
+                case SubjectActionType.Post:
                     return Detect(action.Content);
                 default:
                     return null;

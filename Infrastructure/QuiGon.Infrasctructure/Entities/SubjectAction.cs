@@ -5,7 +5,7 @@
     /// </summary>
     public class SubjectAction
     {
-        public SubjectAction(long id, SubjectACtionType type, ISubjectActionContent content, long authorId, long recipientId, SubjectAction parentSubjectAction)
+        public SubjectAction(long id, SubjectActionType type, ISubjectActionContent content, long authorId, long recipientId, SubjectAction parentSubjectAction)
         {
             Id = id;
             Type = type;
@@ -23,7 +23,7 @@
         /// <summary>
         /// Тип действия
         /// </summary>
-        public SubjectACtionType Type { get; }
+        public SubjectActionType Type { get; }
 
         /// <summary>
         /// Содержимое действия

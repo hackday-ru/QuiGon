@@ -52,11 +52,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\FilterChain.cs" />
+    <Compile Include="Filters\IFilter.cs" />
+    <Compile Include="Filters\TextFilters\ITextFilter.cs" />
+    <Compile Include="Filters\TextFilters\NumericFilter.cs" />
+    <Compile Include="Filters\TextFilters\PunctuationFilter.cs" />
+    <Compile Include="Filters\TextFilters\StopWordsFilter.cs" />
+    <Compile Include="Filters\TextFilters\TextFilterConstants.cs" />
+    <Compile Include="Filters\TextFilters\TextToLowerCaseFilter.cs" />
+    <Compile Include="Helpers\WordsSeparator.cs" />
+    <Compile Include="IAnalysisRequest.cs" />
+    <Compile Include="IAnalysisData.cs" />
     <Compile Include="LanguageDetection\ITextLanguageDetectorFacade.cs" />
     <Compile Include="LanguageDetection\Language.cs" />
     <Compile Include="LanguageDetection\LanguageDetector.cs" />
     <Compile Include="LanguageDetection\NTextCat\NTextCatLanguageDetector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Text\StopWords\StopWordsFactory.cs" />
+    <Compile Include="Helpers\WordsFromFileProvider.cs" />
+    <Compile Include="Text\TextAnalysisData.cs" />
+    <Compile Include="Text\TextAnalysisRequest.cs" />
+    <Compile Include="Text\TextAnalyzer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\QuiGon.Infrasctructure\QuiGon.Infrastructure.csproj">
@@ -297,6 +313,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
+    <Content Include="Text\StopWords\Storage\Russian.sw">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="LanguageDetection\NTextCat\LanguageModels\Core14.profile.xml">

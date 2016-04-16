@@ -3,7 +3,7 @@
     /// <summary>
     /// Тип действия субъекта
     /// </summary>
-    public enum SubjectACtionType : byte
+    public enum SubjectActionType : byte
     {
         /// <summary>
         /// Неизвестный тип
