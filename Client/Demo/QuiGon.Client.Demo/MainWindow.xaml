@@ -1,0 +1,69 @@
+﻿<controls:MetroWindow x:Class="QuiGon.Client.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuiGon.Client.Demo"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        Title="QuiGon" 
+                      Height="350" 
+                      Width="925"
+                      WindowStartupLocation="CenterScreen"
+                      GlowBrush="{DynamicResource AccentColorBrush}"
+                      WindowState="Maximized" 
+                      mc:Ignorable="d" 
+                      >
+    <controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/controls.buttons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <BooleanToVisibilityConverter x:Key="btv" />
+        </ResourceDictionary>
+    </controls:MetroWindow.Resources>
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid
+            Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Margin="12"
+                         x:Name="Login"
+                     controls:TextBoxHelper.Watermark="Введите короткий id пользователя или сообщества"
+                         Text="{Binding SubjectId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Grid.Column="1"
+                        Width="120"
+                        Margin="12"
+                        Content="Анализировать"
+                        x:Name="Button" Click="Button_Click"/>
+            </Grid>
+            <DataGrid x:Name="PatientsDG"
+                  Grid.Row="1"
+                      
+                  BorderBrush="{DynamicResource AccentColorBrush}"
+                  BorderThickness="2"
+                  RenderOptions.ClearTypeHint="Enabled"
+                  TextOptions.TextFormattingMode="Display"
+                  AutoGenerateColumns="True" 
+                  GridLinesVisibility="All"
+                  SelectionMode="Single"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  CanUserResizeRows="False"
+                  CanUserReorderColumns="False"
+                  SelectionUnit="FullRow"
+                  IsReadOnly="True"
+                  ColumnWidth="*">
+            </DataGrid>
+        </Grid>
+    </Grid>
+   
+
+</controls:MetroWindow>

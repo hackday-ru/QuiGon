@@ -38,6 +38,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuiGon.DataProviders.Infrus
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QiuGon.DataProviders.VkDakaProvider", "DataProviders\VkDataProvider\QiuGon.DataProviders.VkDakaProvider\QiuGon.DataProviders.VkDakaProvider.csproj", "{B0BC19F9-9568-4D4D-A03F-EA9BDA2ABA4C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{48ECB27B-2CA4-484C-AF98-076A5F9879CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuiGon.Client.Demo", "Client\Demo\QuiGon.Client.Demo\QuiGon.Client.Demo.csproj", "{9441A9F6-448A-496E-A9E3-23002EF9C2EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +68,10 @@ Global
 		{B0BC19F9-9568-4D4D-A03F-EA9BDA2ABA4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0BC19F9-9568-4D4D-A03F-EA9BDA2ABA4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0BC19F9-9568-4D4D-A03F-EA9BDA2ABA4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9441A9F6-448A-496E-A9E3-23002EF9C2EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9441A9F6-448A-496E-A9E3-23002EF9C2EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9441A9F6-448A-496E-A9E3-23002EF9C2EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9441A9F6-448A-496E-A9E3-23002EF9C2EA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +85,7 @@ Global
 		{D5BC3ECC-E689-4132-81DD-3083E2C06783} = {A7F6687F-5A7D-453C-9906-8CABB76FB3C0}
 		{24834CD7-381D-459F-9DDB-A69C8B0A8634} = {15A305AC-356D-4E9E-AD97-66BA676B1E43}
 		{B0BC19F9-9568-4D4D-A03F-EA9BDA2ABA4C} = {C86A1D10-158B-443F-92B4-EE94947CF4FB}
+		{48ECB27B-2CA4-484C-AF98-076A5F9879CA} = {D323708F-21F7-4207-9787-0695A09ADEE7}
+		{9441A9F6-448A-496E-A9E3-23002EF9C2EA} = {48ECB27B-2CA4-484C-AF98-076A5F9879CA}
 	EndGlobalSection
 EndGlobal
