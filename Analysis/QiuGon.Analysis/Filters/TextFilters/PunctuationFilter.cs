@@ -23,7 +23,7 @@ namespace QuiGon.Analysis.Filters.TextFilters
             var filteredData = new List<string>();
             foreach (var data in textData.Data)
             {
-                var filteredValue = Regex.Replace(data, PunctuationRegexPattern, TextFilterConstants.ReplacedString);
+                var filteredValue = Regex.Replace(data, PunctuationRegexPattern, TextOperationConstants.ReplacedString);
                 if(String.IsNullOrWhiteSpace(filteredValue)) continue;
 
                 filteredData.Add(filteredValue);

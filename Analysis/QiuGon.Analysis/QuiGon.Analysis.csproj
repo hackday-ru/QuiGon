@@ -73,11 +73,14 @@
     <Compile Include="Filters\TextFilters\PunctuationFilter.cs" />
     <Compile Include="Filters\TextFilters\StemingFilter.cs" />
     <Compile Include="Filters\TextFilters\StopWordsFilter.cs" />
-    <Compile Include="Filters\TextFilters\TextFilterConstants.cs" />
+    <Compile Include="Sentiment\SentimentAnalyzer.cs" />
+    <Compile Include="Sentiment\SentimentDictionary.cs" />
+    <Compile Include="Sentiment\SentimentMood.cs" />
+    <Compile Include="Text\TextOperationConstants.cs" />
     <Compile Include="Filters\TextFilters\TextToLowerCaseFilter.cs" />
     <Compile Include="Helpers\WordsSeparator.cs" />
     <Compile Include="IAnalysisRequest.cs" />
-    <Compile Include="IAnalysisData.cs" />
+    <Compile Include="Text\IAnalysisData.cs" />
     <Compile Include="LanguageDetection\ITextLanguageDetectorFacade.cs" />
     <Compile Include="LanguageDetection\Language.cs" />
     <Compile Include="LanguageDetection\LanguageDetector.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Text\Lemmatisation\ILemmatyzerFacade.cs" />
     <Compile Include="Text\Lemmatisation\Lemmatyzer.cs" />
+    <Compile Include="Sentiment\SentimentStatisticFactory.cs" />
     <Compile Include="Text\Stemming\IStemerFacade.cs" />
     <Compile Include="Text\Stemming\LingvoNet\LingovNetStemmer.cs" />
     <Compile Include="Text\Lemmatisation\Solarix\SolarixLemmatyzer.cs" />
@@ -345,6 +349,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Text\Lemmatisation\Solarix\lemmatizer.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sentiment\Storage\Russian.sd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

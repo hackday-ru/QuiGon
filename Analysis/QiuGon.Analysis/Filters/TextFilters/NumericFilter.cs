@@ -24,7 +24,7 @@ namespace QuiGon.Analysis.Filters.TextFilters
             var filteredData = new List<string>();
             foreach (var data in textData.Data)
             {
-                var filteredValue = Regex.Replace(data, NumberRegexPattern, TextFilterConstants.ReplacedString);
+                var filteredValue = Regex.Replace(data, NumberRegexPattern, TextOperationConstants.ReplacedString);
                 if (String.IsNullOrWhiteSpace(filteredValue)) continue;
                 filteredData.Add(filteredValue);
             }

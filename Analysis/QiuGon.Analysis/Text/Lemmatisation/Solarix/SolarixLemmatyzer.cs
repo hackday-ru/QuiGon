@@ -56,6 +56,7 @@ namespace QuiGon.Analysis.Text.Lemmatisation.Solarix
         {
             try
             {
+                if (_lemEngine == IntPtr.Zero) return;
                 LemmatizatorEngine.sol_DeleteLemmatizator(_lemEngine);
             }
             catch (Exception ex)
