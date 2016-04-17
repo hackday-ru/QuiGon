@@ -76,6 +76,8 @@
     <Compile Include="Sentiment\SentimentAnalyzer.cs" />
     <Compile Include="Sentiment\SentimentDictionary.cs" />
     <Compile Include="Sentiment\SentimentMood.cs" />
+    <Compile Include="Text\Statistic\IdfCache.cs" />
+    <Compile Include="Text\Statistic\TfidfCalculator.cs" />
     <Compile Include="Text\TextOperationConstants.cs" />
     <Compile Include="Filters\TextFilters\TextToLowerCaseFilter.cs" />
     <Compile Include="Helpers\WordsSeparator.cs" />

@@ -9,6 +9,7 @@ using QuiGon.Analysis.Sentiment;
 using QuiGon.Analysis.Text;
 using QuiGon.Analysis.Text.Lemmatisation;
 using QuiGon.Analysis.Text.Lemmatisation.Solarix;
+using QuiGon.Analysis.Text.Statistic;
 using QuiGon.Infrastructure.Entities;
 
 namespace QuiGon.Analysis.Tests
@@ -27,7 +28,9 @@ namespace QuiGon.Analysis.Tests
 
                 //TestSentimentTrain();
 
-                TestSentimentTest();
+                //TestSentimentTest();
+
+                TestTfIdf();
             }
             catch (Exception ex)
             {
@@ -420,5 +423,83 @@ namespace QuiGon.Analysis.Tests
 
         #endregion
 
+
+
+        #region Расчет метрики
+
+        private static void TestTfIdf()
+        {
+            var filters = new List<IFilter>
+            {
+                new TextToLowerCaseFilter(),
+                new NumericFilter(),
+                new PunctuationFilter(),
+                new StemingFilter(),
+                new StopWordsFilter()
+
+            };
+            var filterChain = new FilterChain(filters);
+            var counter = 0;
+            var textNumber = 1;
+            var texts = GetTextForSentimentTrainingAnalysis();
+            TfidfCalculator tdifCalculator;
+            foreach (var testText in texts)
+            {
+                var words = WordsSeparator.SeparateWords(testText);
+                var filteredText =
+                    filterChain.Filter(new TextAnalysisRequest(-1, SubjectActionType.Post, new TextAnalysisData(words)));
+
+                var filteredTerm = (filteredText.Data as TextAnalysisData).Data.ToArray();
+                tdifCalculator = new TfidfCalculator(filteredTerm, textNumber);
+                foreach (var term in filteredTerm)
+                {
+                    var metric = tdifCalculator.GetMetric(term);
+                    Console.WriteLine("{0}.{1} - {2}", counter++, testText.Split(' ').FirstOrDefault(), metric);
+                }
+                textNumber++;
+
+            }
+
+            textNumber = 10;
+            texts = GetTextForSentimentTestAnalysis();
+            tdifCalculator = new TfidfCalculator(texts, textNumber);
+            foreach (var testText in texts)
+            {
+                var words = WordsSeparator.SeparateWords(testText);
+                var filteredText =
+                    filterChain.Filter(new TextAnalysisRequest(-1, SubjectActionType.Post, new TextAnalysisData(words)));
+
+                var filteredTerm = (filteredText.Data as TextAnalysisData).Data.ToArray();
+                tdifCalculator = new TfidfCalculator(filteredTerm, textNumber);
+                foreach (var term in filteredTerm)
+                {
+                    var metric = tdifCalculator.GetMetric(term);
+                    Console.WriteLine("{0}.{1} - {2}", counter++, testText.Split(' ').FirstOrDefault(), metric);
+                }
+                textNumber++;
+            }
+
+            textNumber = 10;
+            texts = GetTextForSentimentTestAnalysis();
+            foreach (var testText in texts)
+            {
+                var words = WordsSeparator.SeparateWords(testText);
+                var filteredText =
+                    filterChain.Filter(new TextAnalysisRequest(-1, SubjectActionType.Post, new TextAnalysisData(words)));
+
+                var filteredTerm = (filteredText.Data as TextAnalysisData).Data.ToArray();
+                tdifCalculator = new TfidfCalculator(filteredTerm, textNumber);
+                foreach (var term in filteredTerm)
+                {
+                    var metric = tdifCalculator.GetMetric(term);
+                    Console.WriteLine("{0}.{1} - {2}", counter++, testText.Split(' ').FirstOrDefault(), metric);
+                }
+                textNumber++;
+            }
+
+
+        }
+        
+        #endregion
     }
 }
