@@ -30,7 +30,9 @@ namespace QuiGon.Analysis.Tests
 
                 //TestSentimentTest();
 
-                TestTfIdf();
+                //TestTfIdf();
+
+                TestTextAnalyzer();
             }
             catch (Exception ex)
             {
@@ -39,7 +41,6 @@ namespace QuiGon.Analysis.Tests
             finally
             {
                 Console.ReadLine();
-                SolarixLemmatyzer.Instance.Dispose();
             }
         }
 
@@ -422,9 +423,7 @@ namespace QuiGon.Analysis.Tests
         }
 
         #endregion
-
-
-
+        
         #region Расчет метрики
 
         private static void TestTfIdf()
@@ -499,7 +498,46 @@ namespace QuiGon.Analysis.Tests
 
 
         }
-        
+
+        #endregion
+
+
+        #region Почти финиш анализа
+
+        private static void TestTextAnalyzer()
+        {
+            var filters = new List<IFilter>
+            {
+                new TextToLowerCaseFilter(),
+                new NumericFilter(),
+                new PunctuationFilter(),
+                new StemingFilter(),
+                new StopWordsFilter()
+
+            };
+
+            var filterChain = new FilterChain(filters);
+            var sentimentAnalyzer = new SentimentAnalyzer();
+            var languageDetector = new LanguageDetector();
+            var textAnalyzer = new TextAnalyzer(filterChain, sentimentAnalyzer, languageDetector);
+
+            var counter = 0;
+            foreach (var textForSentimentTestAnalysi in GetTextForSentimentTestAnalysis())
+            {
+                var preparedText = WordsSeparator.SeparateWords(textForSentimentTestAnalysi);
+                var response =
+                    textAnalyzer.Analyze(new TextAnalysisRequest(counter, SubjectActionType.Post,
+                        new TextAnalysisData(preparedText)));
+                if (response == null)
+                {
+                    Console.WriteLine("Fail with data filling");
+                }
+                Console.WriteLine("{0}. {1}  ({2})", counter++, response.Statistic, response.Mood);
+            }
+
+
+        }
+
         #endregion
     }
 }

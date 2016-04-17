@@ -78,6 +78,8 @@
     <Compile Include="Sentiment\SentimentMood.cs" />
     <Compile Include="Text\Statistic\IdfCache.cs" />
     <Compile Include="Text\Statistic\TfidfCalculator.cs" />
+    <Compile Include="Text\TerroristWords\TerroristWordSetFactory.cs" />
+    <Compile Include="Text\TextAnalysisResponse.cs" />
     <Compile Include="Text\TextOperationConstants.cs" />
     <Compile Include="Filters\TextFilters\TextToLowerCaseFilter.cs" />
     <Compile Include="Helpers\WordsSeparator.cs" />
@@ -354,6 +356,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Sentiment\Storage\Russian.sd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Text\TerroristWords\Storage\Russian.tws">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

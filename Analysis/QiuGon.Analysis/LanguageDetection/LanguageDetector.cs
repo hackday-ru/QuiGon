@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using QuiGon.Analysis.LanguageDetection.NTextCat;
+using QuiGon.Analysis.Text;
 using QuiGon.Infrastructure.Entities;
 
 namespace QuiGon.Analysis.LanguageDetection
@@ -33,6 +35,30 @@ namespace QuiGon.Analysis.LanguageDetection
             var textContent = content as TextContent;
             if (String.IsNullOrEmpty(textContent?.Content)) return null;
             return _textLanguageDetector.Detect(textContent.Content);
+        }
+
+
+        public Language? Detect(TextAnalysisRequest data)
+        {
+            if (data == null) throw new ArgumentNullException(nameof(data));
+
+            switch (data.Type)
+            {
+                case SubjectActionType.Comment:
+                case SubjectActionType.Repost:
+                case SubjectActionType.Post:
+                    var content = data.Data as TextAnalysisData;
+                    if (content == null) return null;
+                    return Detect(content.Data.FirstOrDefault());
+                default:
+                    return null;
+            }
+        }
+
+        private Language? Detect(string text)
+        {
+            if (String.IsNullOrEmpty(text)) return null;
+            return _textLanguageDetector.Detect(text);
         }
     }
 }

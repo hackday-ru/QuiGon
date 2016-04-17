@@ -32,7 +32,7 @@ namespace QuiGon.Analysis.Text.Statistic
             var numberOfOccurrences = _counter.ContainsKey(term) ? _counter[term] : 1;
             var tf = (double)numberOfOccurrences/_documentsCount;
 
-            var idf = Math.Log((double)IdfCache.Instance.GetDocumentsCount()/IdfCache.Instance.GetDocumentsWithTermCount(term));
+            var idf = Math.Abs(Math.Log((IdfCache.Instance.GetDocumentsCount() + 0.5)/(IdfCache.Instance.GetDocumentsWithTermCount(term) + 0.7)));
 
             return tf*idf;
         }

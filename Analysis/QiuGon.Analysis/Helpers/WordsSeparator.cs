@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace QuiGon.Analysis.Helpers
 {
@@ -8,7 +9,13 @@ namespace QuiGon.Analysis.Helpers
         {
             if (String.IsNullOrEmpty(text)) return null;
 
-            return text.Split(' ', '\t', '\n', '\n', '\r');
+            var returnedValues = new List<string>();
+            foreach (var term in text.Split(' ', '\t', '\n', '\n', '\r'))
+            {
+                if (String.IsNullOrWhiteSpace(term)) continue;
+                returnedValues.Add(term);
+            }
+            return returnedValues.ToArray();
         }
     }
 }

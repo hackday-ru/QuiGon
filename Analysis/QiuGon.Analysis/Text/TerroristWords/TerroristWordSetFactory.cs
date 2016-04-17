@@ -3,44 +3,33 @@ using QuiGon.Analysis.Helpers;
 using QuiGon.Analysis.LanguageDetection;
 using QuiGon.Analysis.Text.Stemming;
 
-namespace QuiGon.Analysis.Text.StopWords
+namespace QuiGon.Analysis.Text.TerroristWords
 {
-    /// <summary>
-    /// Фабрика стоп-слов
-    /// </summary>
-    /// <remarks>
-    /// Не содержит символы и числа
-    /// </remarks>
-    public class StopWordsFactory
+    public class TerroristWordSetFactory
     {
-        #region Singletone
+        #region Singleton
 
-        private static StopWordsFactory _instance;
+        private static TerroristWordSetFactory _instance;
 
-        public static StopWordsFactory Instance
-        {
-            get { return _instance ?? (_instance = new StopWordsFactory()); }
-        }
+        public static  TerroristWordSetFactory Instance
+        { get { return _instance ?? (_instance = new TerroristWordSetFactory()); } }
 
         #endregion
 
-        #region Путь к словарем стоп-слов
+        private const string RussianTerroristWordsSetPath = @"Text\TerroristWords\Storage\Russian.tws";
 
-        private const string RussianStopWordsPath = @"Text\StopWords\Storage\Russian.sw";
 
-        #endregion
+        private readonly Dictionary<Language, HashSet<string>> _terrorisWordsSet;
 
-        private readonly Dictionary<Language, HashSet<string>> _stopWords; 
-
-        private StopWordsFactory()
+        private TerroristWordSetFactory()
         {
-            _stopWords = new Dictionary<Language, HashSet<string>>();
+            _terrorisWordsSet = new Dictionary<Language, HashSet<string>>();
             Init();
         }
 
         private void Init()
         {
-            _stopWords.Add(Language.Russian, GetRussianStopWords());
+            _terrorisWordsSet.Add(Language.Russian, GetRussianStopWords());
         }
 
         /// <summary>
@@ -52,7 +41,7 @@ namespace QuiGon.Analysis.Text.StopWords
             var stemmer = new Stemmer();
 
             var stemmedWords = new HashSet<string>();
-            var stopWords = WordsFromFileProvider.GetStopWordsFromFile(RussianStopWordsPath) ??  new HashSet<string>();
+            var stopWords = WordsFromFileProvider.GetStopWordsFromFile(RussianTerroristWordsSetPath) ?? new HashSet<string>();
             foreach (var stopWord in stopWords)
             {
                 stemmedWords.Add(stemmer.Stem(stopWord));
@@ -69,8 +58,8 @@ namespace QuiGon.Analysis.Text.StopWords
         /// <returns></returns>
         public HashSet<string> GetStopWords(Language language)
         {
-            return _stopWords.ContainsKey(language)
-                ? _stopWords[language]
+            return _terrorisWordsSet.ContainsKey(language)
+                ? _terrorisWordsSet[language]
                 : null;
         }
     }
