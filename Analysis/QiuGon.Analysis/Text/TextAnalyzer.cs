@@ -44,6 +44,7 @@ namespace QuiGon.Analysis.Text
             var tfIdfCalculator = new TfidfCalculator(terms, request.ActionId);
             var statisticsResult = new Dictionary<string, double>();
             var terroristWords = TerroristWordSetFactory.Instance.GetStopWords(language.Value);
+            if (terroristWords == null) return null;
             foreach (var term in terms)
             {
                 var metric = tfIdfCalculator.GetMetric(term) * 2 / terms.Length;

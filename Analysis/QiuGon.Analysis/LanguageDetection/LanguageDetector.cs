@@ -48,7 +48,7 @@ namespace QuiGon.Analysis.LanguageDetection
                 case SubjectActionType.Repost:
                 case SubjectActionType.Post:
                     var content = data.Data as TextAnalysisData;
-                    if (content == null) return null;
+                    if (content?.Data == null) return null;
                     return Detect(content.Data.FirstOrDefault());
                 default:
                     return null;

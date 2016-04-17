@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using QiuGon.DataProviders.VkDakaProvider;
 using QuiGon.Analysis.Filters;
 using QuiGon.Analysis.Filters.TextFilters;
 using QuiGon.Analysis.Helpers;
@@ -32,7 +33,9 @@ namespace QuiGon.Analysis.Tests
 
                 //TestTfIdf();
 
-                TestTextAnalyzer();
+                //TestTextAnalyzer();
+
+                AnalyzeLast100PostForUser("max_markelow");
             }
             catch (Exception ex)
             {
@@ -536,6 +539,60 @@ namespace QuiGon.Analysis.Tests
             }
 
 
+        }
+
+        #endregion
+
+        #region VkAPi
+
+        private static void AnalyzeLast100PostForUser(string userId)
+        {
+            var data = GetWallData(userId);
+
+            var responses = new List<TextAnalysisRequest>();
+            foreach (var subjectAction in data ?? new List<SubjectAction>())
+            {
+                var terms = WordsSeparator.SeparateWords((subjectAction.Content as TextContent)?.Content ?? string.Empty);
+                responses.Add(new TextAnalysisRequest(subjectAction.Id, subjectAction.Type, new TextAnalysisData(terms)));
+            }
+
+            var filters = new List<IFilter>
+            {
+                new TextToLowerCaseFilter(),
+                new NumericFilter(),
+                new PunctuationFilter(),
+                new StemingFilter(),
+                new StopWordsFilter()
+
+            };
+
+            var filterChain = new FilterChain(filters);
+            var sentimentAnalyzer = new SentimentAnalyzer();
+            var languageDetector = new LanguageDetector();
+            var textAnalyzer = new TextAnalyzer(filterChain, sentimentAnalyzer, languageDetector);
+
+            var counter = 0;
+            foreach (var textAnalysisRequest in responses)
+            {
+                var response = textAnalyzer.Analyze(textAnalysisRequest);
+
+                if (response == null)
+                {
+                    Console.WriteLine("Fail with data filling");
+                }
+                if (response == null)
+                {
+                    Console.WriteLine("Fail with data filling");
+                    continue;
+                }
+                Console.WriteLine("{0}. {1}  ({2})", counter++, response.Statistic, response.Mood);
+            }
+        }
+
+        private static List<SubjectAction> GetWallData(string userId)
+        {
+            var vkDataProvider = new VkDataProvider();
+            return vkDataProvider.GetWallForUserAsync(userId).Result;
         }
 
         #endregion

@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5BC3ECC-E689-4132-81DD-3083E2C06783}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{24834CD7-381D-459F-9DDB-A69C8B0A8634}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QuiGon.Analysis.Tests</RootNamespace>
-    <AssemblyName>QuiGon.Analysis.Tests</AssemblyName>
+    <RootNamespace>QuiGon.DataProviders.Infrustructure</RootNamespace>
+    <AssemblyName>QuiGon.DataProviders.Infrustructure</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,29 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IData.cs" />
+    <Compile Include="IDataProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Analysis\QiuGon.Analysis\QuiGon.Analysis.csproj">
-      <Project>{3c5cb61b-0004-4ff0-ac69-7d1c8a6ec3fa}</Project>
-      <Name>QuiGon.Analysis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\DataProviders\Infrastructure\QuiGon.DataProviders.Infrustructure\QuiGon.DataProviders.Infrustructure.csproj">
-      <Project>{24834cd7-381d-459f-9ddb-a69c8b0a8634}</Project>
-      <Name>QuiGon.DataProviders.Infrustructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\DataProviders\VkDataProvider\QiuGon.DataProviders.VkDakaProvider\QiuGon.DataProviders.VkDakaProvider.csproj">
-      <Project>{b0bc19f9-9568-4d4d-a03f-ea9bda2aba4c}</Project>
-      <Name>QiuGon.DataProviders.VkDakaProvider</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Infrastructure\QuiGon.Infrasctructure\QuiGon.Infrastructure.csproj">
-      <Project>{0e19d097-17bc-46ba-a7e4-20aabd0f5f85}</Project>
-      <Name>QuiGon.Infrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

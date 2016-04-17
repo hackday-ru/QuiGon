@@ -32,6 +32,7 @@ namespace QuiGon.Analysis.Sentiment
             if (data?.Data == null || data.Data.Count == 0) return null;
 
             var dictionary = SentimentStatisticFactory.Instance.GetDictionary(language);
+            if (language == Language.Unknown) return null;
 
             double value = 0;
             var normalWords = 0;
